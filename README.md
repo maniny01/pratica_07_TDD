@@ -3,7 +3,8 @@
 
 ## Integrantes do Grupo
 * [Diego Manini Magalhães] - [32424894]
-* [Nome Completo do Aluno 2] - [Matrícula / RA]
+* [Yago Siqueira] - [325144526]
+* [Diogo Marx Lopes] - [325132950]
 
 ## Tecnologias e Ambiente
 * Java 8
