@@ -1,13 +1,19 @@
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
 public class ClienteTest {
+    @Test
+    public void testCriacaoCliente() {
+        Cliente c = new Cliente(1, "Joao", 10);
+        assertEquals(1, c.getId());
+        assertEquals("Joao", c.getNome());
+        assertEquals(10, c.getDesconto());
+        assertEquals("nd", c.getGenero());
+    }
 
     @Test
-    public void testClienteCriacaoEToString() {
-        Cliente cliente = new Cliente(1, "Ana Silva", 10, "f");
-        
-        assertEquals(1, cliente.getId());
-        assertEquals("Ana Silva", cliente.getNome());
-        assertEquals(10, cliente.getDesconto());
-        assertEquals("f", cliente.getGenero());
-        assertEquals("Ana Silva (1) (10%)", cliente.toString());
+    public void testToString() {
+        Cliente c = new Cliente(1, "Joao", 10);
+        assertEquals("Joao (1) (10%)", c.toString());
     }
 }

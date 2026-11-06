@@ -1,9 +1,7 @@
-package main.java;
-
 public class ContaCliente {
     private int id;
     private Cliente cliente;
-    private double saldo;
+    private double saldo = 0.0;
 
     public ContaCliente(int id, Cliente cliente, double saldo) {
         this.id = id;
@@ -14,7 +12,10 @@ public class ContaCliente {
     public ContaCliente(int id, Cliente cliente) {
         this.id = id;
         this.cliente = cliente;
-        this.saldo = 0.0;
+    }
+
+    public ContaCliente(int id) {
+        this.id = id;
     }
 
     public int getId() {
@@ -37,20 +38,33 @@ public class ContaCliente {
         this.saldo = saldo;
     }
 
-    public void depositar(double valor) {
-        if (valor > 0) {
-            this.saldo += valor;
-        }
+    // Métodos do diagrama
+    public double addDeposito(double valor) {
+        this.saldo += valor;
+        return this.saldo;
     }
 
-    public void sacar(double valor) {
-        if (valor > 0 && valor <= this.saldo) {
+    public double subSaldo(double valor) {
+        if (this.saldo >= valor) {
             this.saldo -= valor;
+        } else {
+            System.out.println("Saldo insuficiente!");
         }
+        return this.saldo;
+    }
+
+    // Métodos alternativos chamados nos testes
+    public double sacar(double valor) {
+        return subSaldo(valor);
+    }
+
+    public double depositar(double valor) {
+        return addDeposito(valor);
     }
 
     @Override
     public String toString() {
-        return "Conta [id=" + id + ", cliente=" + (cliente != null ? cliente.toString() : "null") + ", saldo=" + saldo + "]";
+        String nome = (cliente != null) ? cliente.getNome() : "";
+        return nome + " (" + id + ") saldo=R$" + String.format("%.2f", saldo);
     }
 }

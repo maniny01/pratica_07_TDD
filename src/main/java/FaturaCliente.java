@@ -1,5 +1,3 @@
-package main.java;
-
 public class FaturaCliente {
     private int id;
     private Cliente cliente;
@@ -36,16 +34,15 @@ public class FaturaCliente {
     }
 
     public double getValorComDesconto() {
-        if (cliente == null || cliente.getDesconto() <= 0) {
-            return valor;
+        if (cliente != null) {
+            return valor - (valor * (cliente.getDesconto() / 100.0));
         }
-        double descontoPercentual = cliente.getDesconto() / 100.0;
-        return valor - (valor * descontoPercentual);
+        return valor;
     }
 
     @Override
     public String toString() {
-        return "Fatura [id=" + id + ", cliente=" + (cliente != null ? cliente.toString() : "null") + ", valor=" + valor + "]";
+        String clienteStr = (cliente != null) ? cliente.toString() : "null";
+        return "Fatura [id=" + id + ", cliente=" + clienteStr + ", valor=" + valor + " ]";
     }
-    
 }
